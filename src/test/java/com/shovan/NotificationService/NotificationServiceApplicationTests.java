@@ -1,4 +1,4 @@
-package com.shovan.Notification.Service;
+package com.shovan.NotificationService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

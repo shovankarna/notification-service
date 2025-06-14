@@ -1,4 +1,4 @@
-package com.shovan.Notification.Service;
+package com.shovan.NotificationService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

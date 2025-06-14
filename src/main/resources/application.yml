@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: Notification-Service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notification_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+  
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 20
+        failureRateThreshold: 50
+    instances:
+      emailNotifier:
+        baseConfig: default
+      smsNotifier:
+        baseConfig: default
+      pushNotifier:
+        baseConfig: default
+
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 500ms
+    instances:
+      emailNotifier:
+        baseConfig: default
+      smsNotifier:
+        baseConfig: default
+      pushNotifier:
+        baseConfig: default
